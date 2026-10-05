@@ -10,13 +10,13 @@ Idioma: el código de dominio, los textos de la UI, los comentarios y los commit
 
 Gestor de paquetes: **bun**.
 
-| Comando | Qué hace |
-| --- | --- |
-| `bun dev` | Servidor de desarrollo (Vite) |
-| `bun run build` | `tsc -b` + build de producción |
-| `bun run test` | Pruebas del dominio y de la fachada (Vitest, entorno Node) |
-| `bun run lint` | oxlint |
-| `npx shadcn@latest add <componente>` | Agrega componentes shadcn |
+| Comando                              | Qué hace                                                   |
+| ------------------------------------ | ---------------------------------------------------------- |
+| `bun dev`                            | Servidor de desarrollo (Vite)                              |
+| `bun run build`                      | `tsc -b` + build de producción                             |
+| `bun run test`                       | Pruebas del dominio y de la fachada (Vitest, entorno Node) |
+| `bun run lint`                       | oxlint                                                     |
+| `npx shadcn@latest add <componente>` | Agrega componentes shadcn                                  |
 
 `bunx --bun shadcn@latest` falla con bun 1.2.4 (`Script not found`): usar `npx shadcn@latest`.
 
@@ -70,7 +70,7 @@ Regla de dependencias: `components → context → app → domain`; `infrastruct
 ## Interfaz
 
 - Componentes **shadcn** (estilo `radix-nova`, base `radix`, iconos `lucide`). Reglas de la skill `shadcn`: `FieldGroup` + `Field` para formularios, `gap-*` en vez de `space-*`, colores semánticos (`bg-primary`, `text-muted-foreground`, nunca `bg-blue-500`), `cn()` para clases condicionales, `data-icon` en iconos de botones, `Alert`/`Empty`/`Badge` en vez de markup propio, `ToggleGroup` para 2–7 opciones.
-- Tema en `src/index.css`: cobalto (`--primary`), ámbar de señal (`--signal`), verde (`--success`), fondo gris concreto frío. Tipografías: Bricolage Grotesque (títulos, saldo) y Figtree (texto). Solo tema claro.
+- Tema en `src/index.css`: cobalto (`--primary`), ámbar de señal (`--signal`), verde (`--success`), amarillo de la tarjeta (`--tarjeta`, #ddff03, con texto oscuro y línea de ruta en cobalto), fondo gris concreto frío. Tipografías: Bricolage Grotesque (títulos, saldo) y Figtree (texto). Solo tema claro.
 - Elemento memorable: la tarjeta (`tarjeta-visual.tsx`) con la línea de ruta. Mantener el resto sobrio.
 - Buenas prácticas React (skill `vercel-react-best-practices`): estado derivado en el render (sin `useEffect` para derivar), inicializador perezoso de `useState`, imports directos, sin componentes definidos dentro de componentes, ternarios en vez de `&&` para renderizado condicional.
 - La UI no contiene reglas de negocio: solo elige qué clase de dominio instanciar (`crearMedioDePago`) y llama a la fachada `MiLlaveApp`.
@@ -84,6 +84,7 @@ Usarlas: `shadcn` (componentes), `frontend-design` (dirección visual: decidir p
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
 
 Rules:
+
 - For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
 - If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.

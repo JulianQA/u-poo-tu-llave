@@ -14,7 +14,7 @@ function LineaDeRuta({ apagada }: { apagada: boolean }) {
       viewBox="0 0 320 40"
       aria-hidden="true"
       preserveAspectRatio="none"
-      className={cn('pointer-events-none absolute inset-x-0 bottom-0 h-10 w-full', apagada ? 'text-background/50' : 'text-signal')}
+      className={cn('pointer-events-none absolute inset-x-0 bottom-0 h-10 w-full', apagada ? 'text-background/50' : 'text-primary')}
     >
       <path
         d="M-10 30 L70 30 L110 10 L210 10 L250 26 L330 26"
@@ -24,7 +24,7 @@ function LineaDeRuta({ apagada }: { apagada: boolean }) {
         strokeLinejoin="round"
         strokeLinecap="round"
       />
-      <g stroke="currentColor" strokeWidth="3" className={apagada ? 'fill-muted-foreground' : 'fill-primary'}>
+      <g stroke="currentColor" strokeWidth="3" className={apagada ? 'fill-muted-foreground' : 'fill-tarjeta'}>
         <circle cx="70" cy="30" r="4.5" />
         <circle cx="110" cy="10" r="4.5" />
         <circle cx="250" cy="26" r="4.5" />
@@ -55,7 +55,7 @@ export function TarjetaVisual({ numero }: { numero: string }) {
           'relative aspect-[1.586] w-full overflow-hidden rounded-2xl p-5 pb-9 shadow-lg transition-colors duration-300',
           bloqueada
             ? 'bg-muted-foreground text-background shadow-foreground/10'
-            : 'bg-primary text-primary-foreground shadow-primary/25',
+            : 'bg-tarjeta text-tarjeta-foreground shadow-foreground/15',
         )}
       >
         <LineaDeRuta apagada={bloqueada} />
@@ -65,7 +65,7 @@ export function TarjetaVisual({ numero }: { numero: string }) {
             {bloqueada ? (
               <Badge className="bg-background text-destructive">Bloqueada</Badge>
             ) : (
-              <Badge className="bg-signal text-signal-foreground">Activa</Badge>
+              <Badge className="bg-primary text-primary-foreground">Activa</Badge>
             )}
           </div>
 
