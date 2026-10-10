@@ -54,9 +54,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1791604962.681314,
-    "seen": 1791604974.2728422,
-    "ast_hash": "6adee2dceb528816498bc3095e8b5d4a",
+    "mtime": 1791655407.27683,
+    "seen": 1791655426.739702,
+    "ast_hash": "b6951fdab3571b6f0e31af3897956dc5",
     "semantic_hash": ""
   },
   "README.md": {
@@ -1590,9 +1590,15 @@
     "semantic_hash": ""
   },
   "docs/UML.md": {
-    "mtime": 1791604888.0389643,
-    "seen": 1791604974.272846,
-    "ast_hash": "b6b5805f1b1b6b4051d5b853f44abad4",
+    "mtime": 1791655404.6092067,
+    "seen": 1791655426.7397053,
+    "ast_hash": "d1c783f1bca49933ce5d8431c78de8ae",
+    "semantic_hash": ""
+  },
+  "docs/ciclo-de-vida.md": {
+    "mtime": 1791655416.0172334,
+    "seen": 1791655426.7397075,
+    "ast_hash": "755cd2f447b3a2b6e8cf77c1956539e0",
     "semantic_hash": ""
   }
 }

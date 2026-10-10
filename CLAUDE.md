@@ -39,7 +39,7 @@ src/
   components/ui/   Componentes shadcn (generados por la CLI; no editar salvo necesidad)
   lib/             formato.ts, mensaje-de-error.ts, utils.ts (cn)
 docs/
-  UML.md           Diagramas Mermaid: clases del dominio, excepciones, fachada/infraestructura, capas y secuencias
+  UML.md           Diagrama de clases del dominio (Mermaid)
   ciclo-de-vida.md Fases del ciclo de vida: requisitos (RF/RNF), diseño, implementación, pruebas, despliegue, mantenimiento
 ```
 
@@ -69,7 +69,7 @@ Regla de dependencias: `components → context → app → domain`; `infrastruct
 - Persistencia: `localStorage` con clave `tu-llave:v1`; si se cambia el formato, subir `VERSION_DEL_ESQUEMA` en `serializacion.ts`. Si el JSON está corrupto se arranca vacío y se siembran los datos de demostración.
 - Tarjetas de demostración: `1000123456789012` (activa, con historial) y `1000987654321098` (bloqueada). Tarjeta bancaria de prueba: `4111 1111 1111 1111`.
 - Al agregar una regla o clase al dominio, agregar su prueba en `src/domain/dominio.test.ts` (o `src/app/miLlaveApp.test.ts` si toca la fachada o la persistencia).
-- Si cambian clases, atributos, métodos o relaciones del dominio, la fachada o los repositorios, actualizar `docs/UML.md` en el mismo cambio. Para comprobar que los diagramas renderizan: `npx -y -p @mermaid-js/mermaid-cli mmdc -i docs/UML.md -o <carpeta-temporal>/uml.md`.
+- Si cambian clases, atributos, métodos o relaciones del dominio, actualizar `docs/UML.md` en el mismo cambio. Para comprobar que el diagrama renderiza: `npx -y -p @mermaid-js/mermaid-cli mmdc -i docs/UML.md -o <carpeta-temporal>/uml.md`.
 
 ## Interfaz
 

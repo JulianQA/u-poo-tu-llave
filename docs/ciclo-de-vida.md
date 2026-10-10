@@ -60,7 +60,7 @@ El sistema se divide en capas con una regla de dependencias estricta: `component
 
 ### Modelo de dominio
 
-El diagrama completo de clases, la jerarquía de excepciones y los diagramas de secuencia están en [UML.md](UML.md). Las decisiones principales fueron estas:
+El diagrama de clases del dominio está en [UML.md](UML.md). Las decisiones principales fueron estas:
 
 - **Abstracción y herencia.** `Movimiento` es abstracta y tiene dos subclases, `Recarga` y `Viaje`. Lo mismo pasa con `MedioDePago` (`PuntoDeRecarga`, `PSE`, `TarjetaBancaria`), `ServicioDeTransporte` (`TransMilenio`, `SitpZonal`, `ServicioDual`) y `PuntoDeAcceso` (`Estacion`, `Paradero`).
 - **Polimorfismo.** El procesador de recargas trabaja con cualquier `MedioDePago` sin saber cuál es, y el lector trabaja con cualquier `ServicioDeTransporte`. Cada subclase responde a su manera a `verificar`, `admite` o `efectoEnSaldo`.
@@ -77,7 +77,7 @@ El diagrama completo de clases, la jerarquía de excepciones y los diagramas de 
 | Inyección de dependencias    | `Reloj`, `TablaDeTarifas`, repositorio                      | Se pueden reemplazar en las pruebas y cambiar las tarifas en caliente.      |
 | Observador                   | `MiLlaveApp.suscribir`                                      | La interfaz se redibuja cuando cambian los datos.                           |
 
-**Resultado de la fase:** la arquitectura por capas y los diagramas UML.
+**Resultado de la fase:** la arquitectura por capas y el diagrama de clases UML.
 
 ## 3. Implementación
 

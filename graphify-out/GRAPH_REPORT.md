@@ -1,17 +1,17 @@
-# Graph Report - tu-llave-proyecto  (2026-10-09)
+# Graph Report - tu-llave-proyecto  (2026-10-10)
 
 ## Corpus Check
-- 256 files · ~103,739 words
+- 257 files · ~105,010 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: (none) 1, .lock 1, .css 1)
 
 ## Summary
-- 1385 nodes · 2219 edges · 218 communities (75 shown, 143 thin omitted)
-- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 218 edges (avg confidence: 0.94)
+- 1396 nodes · 2242 edges · 225 communities (83 shown, 142 thin omitted)
+- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 230 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `473ffe30`
+- Built from commit: `d0fc54d1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -28,22 +28,22 @@
 - scripts
 - favicon.svg (purple lightning-bolt site icon)
 - panel-recarga.tsx
-- Movimiento
+- serializacion.ts
 - TarjetaMiLlave.ts
 - tsconfig.json
-- Tarifa
+- Viaje
 - Button
 - components.json
 - react
 - dominio.test.ts
 - Commands
 - panel-movimientos.tsx
-- UML — Tu Llave
+- ciclo-de-vida.md
 - 5. Re-render Optimization
 - 7. JavaScript Performance
 - Quick Reference
 - dependencies
-- miLlaveApp.test.ts
+- MiLlaveApp.ts
 - 5. Re-render Optimization
 - Find Skills
 - MiLlaveApp
@@ -52,18 +52,18 @@
 - Styling & Customization
 - 6. Rendering Performance
 - Base vs Radix
-- Badge
-- Component Composition
+- Chat & Messaging
+- App.tsx
 - 3. Server-Side Performance
 - React Best Practices
 - Sections
-- composicion.ts
+- Component Selection
 - Customization & Theming
 - Registry Authoring and Addresses
-- Almacenamiento
+- mi-llave-context.ts
 - shadcn/ui
 - Frontend Design
-- Chat & Messaging
+- Badge
 - 1. Eliminating Waterfalls
 - 2. Bundle Size Optimization
 - React Best Practices
@@ -150,15 +150,20 @@
 - Tools
 - Styling & Customization
 - 6. Rendering Performance
+- Component Composition
 - 3. Server-Side Performance
 - React Best Practices
 - Sections
 - Customization & Theming
 - Registry Authoring and Addresses
+- Component Composition
+- SelectGroup
 - Frontend Design
+- shadcn CLI Reference
 - 1. Eliminating Waterfalls
 - 2. Bundle Size Optimization
 - React Best Practices
+- shadcn CLI Reference
 - Customizing Components
 - 8. Advanced Patterns
 - Icons
@@ -230,22 +235,22 @@
 - .agents/skills/vercel-react-best-practices/rules/server-parallel-nested-fetching.md
 - .agents/skills/vercel-react-best-practices/rules/server-serialization.md
 - .agents/skills/vercel-react-best-practices/rules/_template.md
+- 1. Análisis de requisitos
+- sonner.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `TarjetaMiLlave` - 34 edges
-2. `Viaje` - 28 edges
+2. `Viaje` - 29 edges
 3. `react` - 25 edges
-4. `Titular` - 25 edges
-5. `MiLlaveApp` - 23 edges
+4. `MiLlaveApp` - 24 edges
+5. `Titular` - 24 edges
 6. `Button()` - 23 edges
-7. `2. Jerarquía de excepciones` - 22 edges
+7. `ServicioDeTransporte` - 21 edges
 8. `cn` - 20 edges
-9. `ServicioDeTransporte` - 19 edges
+9. `PuntoDeAcceso` - 19 edges
 10. `compilerOptions` - 19 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Message surfaces use Bubble` --references--> `Badge()`  [INFERRED]
-  .claude/skills/shadcn/rules/chat.md → src/components/ui/badge.tsx
 - `Button / trigger as non-button element (base only)` --references--> `Button()`  [INFERRED]
   .agents/skills/shadcn/rules/base-vs-radix.md → src/components/ui/button.tsx
 - `Icons → [icons.md](./rules/icons.md)` --references--> `Button()`  [INFERRED]
@@ -254,6 +259,8 @@
   .claude/skills/shadcn/rules/base-vs-radix.md → src/components/ui/button.tsx
 - `Icons → [icons.md](./rules/icons.md)` --references--> `Button()`  [INFERRED]
   .claude/skills/shadcn/SKILL.md → src/components/ui/button.tsx
+- `Card structure` --references--> `CardContent()`  [INFERRED]
+  .agents/skills/shadcn/rules/composition.md → src/components/ui/card.tsx
 
 ## Import Cycles
 - None detected.
@@ -262,7 +269,7 @@
 - **graphify codebase navigation flow** — claude_graphify_query_workflow, claude_graphify_wiki_index, claude_graph_report [EXTRACTED 1.00]
 - **Vite React app bootstrap (index.html, #root, main.tsx)** — index_html_entry_page, index_root_div, src_main [INFERRED 0.85]
 
-## Communities (218 total, 143 thin omitted)
+## Communities (225 total, 142 thin omitted)
 
 ### Community 0 - "compilerOptions"
 Cohesion: 0.10
@@ -273,24 +280,24 @@ Cohesion: 0.12
 Nodes (16): compilerOptions, allowImportingTsExtensions, erasableSyntaxOnly, lib, module, moduleDetection, noEmit, noFallthroughCasesInSwitch (+8 more)
 
 ### Community 2 - "package.json"
-Cohesion: 0.11
-Nodes (17): name, private, type, version, @fontsource-variable/bricolage-grotesque, @fontsource-variable/figtree, next-themes, oxlint (+9 more)
+Cohesion: 0.12
+Nodes (15): name, private, type, version, @fontsource-variable/bricolage-grotesque, @fontsource-variable/figtree, oxlint, shadcn (+7 more)
 
 ### Community 3 - "tarjeta-visual.tsx"
-Cohesion: 0.12
-Nodes (19): App(), ComprobanteDialog(), LectorDeTarjeta(), alEnviar(), leer(), PanelRecarga(), recargar(), PanelViaje() (+11 more)
+Cohesion: 0.17
+Nodes (12): LectorDeTarjeta(), alEnviar(), leer(), PanelRecarga(), recargar(), PanelViaje(), pasarPorElLector(), TarjetaVisual() (+4 more)
 
 ### Community 4 - "devDependencies"
 Cohesion: 0.22
 Nodes (9): devDependencies, oxlint, @types/node, @types/react, @types/react-dom, typescript, vite, @vitejs/plugin-react (+1 more)
 
 ### Community 5 - "TarjetaMiLlave"
-Cohesion: 0.11
-Nodes (14): obtenerRepositorio(), sembrarDatosDeDemostracion(), RepositorioDeTitulares, TarjetaMiLlave, Titular, RepositorioEnMemoria, RepositorioLocalStorage, movimientoADTO() (+6 more)
+Cohesion: 0.12
+Nodes (9): hace(), sembrarDatosDeDemostracion(), TARJETA_DEMO_ACTIVA, TARJETA_DEMO_BLOQUEADA, RepositorioDeTitulares, TarjetaMiLlave, DatosTitular, Titular (+1 more)
 
 ### Community 6 - "React + TypeScript + Vite template"
-Cohesion: 0.22
-Nodes (10): favicon.svg, index.html (Vite entry page), #root mount point, Hot Module Replacement (HMR), Oxlint configuration (.oxlintrc.json), Type-aware lint rules (oxlint-tsgolint), React Compiler, React + TypeScript + Vite template (+2 more)
+Cohesion: 0.33
+Nodes (7): Hot Module Replacement (HMR), Oxlint configuration (.oxlintrc.json), Type-aware lint rules (oxlint-tsgolint), React Compiler, React + TypeScript + Vite template, @vitejs/plugin-react (Oxc), @vitejs/plugin-react-swc (SWC)
 
 ### Community 7 - ".oxlintrc.json"
 Cohesion: 0.33
@@ -309,48 +316,48 @@ Cohesion: 1.00
 Nodes (3): favicon.svg (purple lightning-bolt site icon), Brand palette: violet #863bff, light lavender #ede6ff, cyan #47bfff, Purple bolt-shaped logo with blurred gradient glow
 
 ### Community 11 - "panel-recarga.tsx"
-Cohesion: 0.12
-Nodes (22): Items always inside their Group component, Workflow, Items always inside their Group component, Workflow, lucide-react, sonner, Formulario, FORMULARIO_INICIAL (+14 more)
+Cohesion: 0.11
+Nodes (21): Select — multiple selection and object values (base only), Select — multiple selection and object values (base only), lucide-react, Formulario, FORMULARIO_INICIAL, MONTOS_RAPIDOS, Resultado, AlertDescription() (+13 more)
 
-### Community 12 - "Movimiento"
-Cohesion: 0.12
-Nodes (9): FiltroDeMovimientos, HistorialDeMovimientos, DatosMovimiento, Movimiento, TipoMovimiento, DatosRecarga, Recarga, DatosViaje (+1 more)
+### Community 12 - "serializacion.ts"
+Cohesion: 0.07
+Nodes (21): AlmacenamientoFalso, FiltroDeMovimientos, HistorialDeMovimientos, DatosMovimiento, Movimiento, TipoMovimiento, DatosRecarga, Recarga (+13 more)
 
 ### Community 13 - "TarjetaMiLlave.ts"
 Cohesion: 0.10
-Nodes (22): 2. Jerarquía de excepciones, crearMedioDePago(), DatosInvalidosError, ErrorDeDominio, MontoInvalidoError, PagoRechazadoError, PuntoNoAdmitidoError, SaldoInsuficienteError (+14 more)
+Nodes (21): Modelo de dominio, crearMedioDePago(), DatosInvalidosError, ErrorDeDominio, MontoInvalidoError, PagoRechazadoError, PuntoNoAdmitidoError, SaldoInsuficienteError (+13 more)
 
 ### Community 14 - "tsconfig.json"
 Cohesion: 0.40
 Nodes (4): compilerOptions, paths, files, references
 
+### Community 15 - "Viaje"
+Cohesion: 0.10
+Nodes (10): DatosViaje, Viaje, DatosViajeNuevo, PuntoDeAcceso, CalculoDeTarifa, ContextoDeViaje, TipoServicio, ConfiguracionDeTransbordo (+2 more)
+
 ### Community 16 - "Button"
 Cohesion: 0.16
-Nodes (33): Buttons inside inputs use InputGroup + InputGroupAddon, Contents, Field validation and disabled states, FieldSet + FieldLegend for grouping related fields, Forms & Inputs, Forms use FieldGroup + Field, InputGroup requires InputGroupInput/InputGroupTextarea, Option sets (2–7 choices) use ToggleGroup (+25 more)
+Nodes (31): Buttons inside inputs use InputGroup + InputGroupAddon, Contents, Field validation and disabled states, FieldSet + FieldLegend for grouping related fields, Forms & Inputs, Forms use FieldGroup + Field, InputGroup requires InputGroupInput/InputGroupTextarea, Option sets (2–7 choices) use ToggleGroup (+23 more)
 
 ### Community 17 - "components.json"
 Cohesion: 0.09
 Nodes (21): aliases, components, hooks, lib, ui, utils, iconLibrary, menuAccent (+13 more)
 
 ### Community 18 - "react"
-Cohesion: 0.13
-Nodes (15): react, Props, MiLlaveProvider(), FieldDescription(), FieldError(), FieldLabel(), fieldVariants, InputGroupAddon() (+7 more)
+Cohesion: 0.14
+Nodes (18): class-variance-authority, cn, radix-ui, react, Props, FieldDescription(), FieldError(), FieldLabel() (+10 more)
 
 ### Community 19 - "dominio.test.ts"
-Cohesion: 0.09
-Nodes (18): crearMiLlaveApp(), crearApp(), CONFIG_RECARGAS, crearEscenario(), RelojFijo, Viaje, Estacion, Paradero (+10 more)
+Cohesion: 0.17
+Nodes (16): crearMiLlaveApp(), obtenerRepositorio(), crearApp(), CONFIG_RECARGAS, crearEscenario(), RelojFijo, ConfiguracionDeRecargas, ProcesadorDeRecargas (+8 more)
 
 ### Community 20 - "Commands"
-Cohesion: 0.12
-Nodes (17): `add` — Add components, `apply` — Apply a preset to an existing project, `build` — Build a custom registry, Commands, Contents, `diff` — Check for updates, `docs` — Get component documentation URLs, Dry-Run Mode (+9 more)
+Cohesion: 0.17
+Nodes (12): `add` — Add components, `apply` — Apply a preset to an existing project, `build` — Build a custom registry, Commands, `diff` — Check for updates, `docs` — Get component documentation URLs, Dry-Run Mode, `info` — Project information (+4 more)
 
 ### Community 21 - "panel-movimientos.tsx"
 Cohesion: 0.15
-Nodes (17): FiltroDeTipo, finDelDia(), inicioDelDia(), PanelMovimientos(), Empty(), EmptyDescription(), EmptyHeader(), EmptyMedia() (+9 more)
-
-### Community 22 - "UML — Tu Llave"
-Cohesion: 0.25
-Nodes (7): 1. Diagrama de clases del dominio, 3. Fachada e infraestructura, 4. Capas y dependencias, 5. Secuencias principales, Recargar, UML — Tu Llave, Validar un viaje
+Nodes (16): FiltroDeTipo, finDelDia(), inicioDelDia(), PanelMovimientos(), EmptyDescription(), EmptyHeader(), EmptyMedia(), emptyMediaVariants (+8 more)
 
 ### Community 23 - "5. Re-render Optimization"
 Cohesion: 0.12
@@ -368,9 +375,9 @@ Nodes (14): 1. Eliminating Waterfalls (CRITICAL), 2. Bundle Size Optimization (C
 Cohesion: 0.13
 Nodes (15): dependencies, class-variance-authority, cn, @fontsource-variable/bricolage-grotesque, @fontsource-variable/figtree, lucide-react, next-themes, radix-ui (+7 more)
 
-### Community 27 - "miLlaveApp.test.ts"
-Cohesion: 0.19
-Nodes (13): hace(), TARJETA_DEMO_ACTIVA, TARJETA_DEMO_BLOQUEADA, DependenciasDeMiLlaveApp, Oyente, LecturaDeTarjeta, leerTarjeta(), ConfiguracionDeRecargas (+5 more)
+### Community 27 - "MiLlaveApp.ts"
+Cohesion: 0.17
+Nodes (7): DependenciasDeMiLlaveApp, Oyente, Lector, LecturaDeTarjeta, leerTarjeta(), Reloj, ServicioDeTransporte
 
 ### Community 28 - "5. Re-render Optimization"
 Cohesion: 0.12
@@ -381,12 +388,12 @@ Cohesion: 0.14
 Nodes (13): Common Skill Categories, Find Skills, How to Help Users Find Skills, Step 1: Understand What They Need, Step 2: Check the Leaderboard First, Step 3: Search for Skills, Step 4: Verify Quality Before Recommending, Step 5: Present Options to the User (+5 more)
 
 ### Community 30 - "MiLlaveApp"
-Cohesion: 0.14
-Nodes (5): MiLlaveApp, Lector, DatosViajeNuevo, TipoServicio, MovimientoDTO
+Cohesion: 0.13
+Nodes (12): 2. Diseño, 3. Implementación, 4. Pruebas, 5. Despliegue, 6. Mantenimiento, Arquitectura por capas, Ciclo de vida del software — Tu Llave, Convenciones (+4 more)
 
 ### Community 31 - "comprobante-dialog.tsx"
 Cohesion: 0.16
-Nodes (13): class-variance-authority, cn, radix-ui, Props, buttonVariants, DialogContent(), DialogDescription(), DialogFooter() (+5 more)
+Nodes (13): ComprobanteDialog(), Props, DialogContent(), DialogDescription(), DialogFooter(), DialogHeader(), DialogTitle(), ComprobanteDeRecarga (+5 more)
 
 ### Community 32 - "Tools"
 Cohesion: 0.17
@@ -401,16 +408,16 @@ Cohesion: 0.17
 Nodes (12): 6.10 Use React DOM Resource Hints, 6.11 Use useTransition Over Manual Loading States, 6.1 Animate SVG Wrapper Instead of SVG Element, 6.2 CSS content-visibility for Long Lists, 6.3 Hoist Static JSX Elements, 6.4 Optimize SVG Precision, 6.5 Prevent Hydration Mismatch Without Flickering, 6.6 Suppress Expected Hydration Mismatches (+4 more)
 
 ### Community 35 - "Base vs Radix"
-Cohesion: 0.11
-Nodes (20): Accordion, Base vs Radix, Button / trigger as non-button element (base only), Composition: asChild (radix) vs render (base), Contents, Select, Select — multiple selection and object values (base only), Slider (+12 more)
+Cohesion: 0.12
+Nodes (18): Accordion, Base vs Radix, Button / trigger as non-button element (base only), Composition: asChild (radix) vs render (base), Contents, Select, Slider, ToggleGroup (+10 more)
 
-### Community 36 - "Badge"
-Cohesion: 0.09
-Nodes (26): Attachments use Attachment, Chat & Messaging, Contents, Escape hatch: the scroller hooks, Message rows use Message, Message surfaces use Bubble, Scrollable threads use MessageScroller, Streaming, anchoring, and jump-to-latest are built in (+18 more)
+### Community 36 - "Chat & Messaging"
+Cohesion: 0.29
+Nodes (7): Attachments use Attachment, Chat & Messaging, Contents, Escape hatch: the scroller hooks, Message rows use Message, Scrollable threads use MessageScroller, Streaming, anchoring, and jump-to-latest are built in
 
-### Community 37 - "Component Composition"
-Cohesion: 0.07
-Nodes (41): Avatar always needs AvatarFallback, Button has no isPending or isLoading prop, Callouts use Alert, Card structure, Choosing between overlay components, Component Composition, Contents, Dialog, Sheet, and Drawer always need a Title (+33 more)
+### Community 37 - "App.tsx"
+Cohesion: 0.26
+Nodes (14): TabsTrigger must be inside TabsList, Component Structure → [composition.md](./rules/composition.md), TabsTrigger must be inside TabsList, Component Structure → [composition.md](./rules/composition.md), CardContent(), CardDescription(), CardFooter(), CardHeader() (+6 more)
 
 ### Community 38 - "3. Server-Side Performance"
 Cohesion: 0.18
@@ -424,9 +431,9 @@ Nodes (9): 4.1 Deduplicate Global Event Listeners, 4.2 Use Passive Event Listene
 Cohesion: 0.20
 Nodes (9): 1. Eliminating Waterfalls (async), 2. Bundle Size Optimization (bundle), 3. Server-Side Performance (server), 4. Client-Side Data Fetching (client), 5. Re-render Optimization (rerender), 6. Rendering Performance (rendering), 7. JavaScript Performance (js), 8. Advanced Patterns (advanced) (+1 more)
 
-### Community 41 - "composicion.ts"
-Cohesion: 0.39
-Nodes (6): BANCOS_PSE, ESTACIONES_TRONCALES, LIMITES_DE_RECARGA, PARADEROS_ZONALES, PUNTOS_DE_RECARGA, TARIFAS
+### Community 41 - "Component Selection"
+Cohesion: 0.19
+Nodes (12): Button has no isPending or isLoading prop, Choosing between overlay components, No manual z-index on overlay components, Component Selection, Button has no isPending or isLoading prop, Choosing between overlay components, No manual z-index on overlay components, Component Selection (+4 more)
 
 ### Community 43 - "Customization & Theming"
 Cohesion: 0.22
@@ -436,17 +443,21 @@ Nodes (9): Adding Custom Colors, Border Radius, Changing the Theme, Checking for
 Cohesion: 0.22
 Nodes (9): Address Schemes, Build and Verify, GitHub Registries, Include, Item Definitions, Mental Model, Registry Authoring and Addresses, Registry Dependencies (+1 more)
 
+### Community 45 - "mi-llave-context.ts"
+Cohesion: 0.24
+Nodes (8): favicon.svg, index.html (Vite entry page), #root mount point, react-dom, App(), MiLlaveProvider(), MiLlaveContext, src_index
+
 ### Community 46 - "shadcn/ui"
-Cohesion: 0.22
-Nodes (9): Component Docs, Examples, and Usage, Current Project Context, Detailed References, Key Fields, Key Patterns, Principles, Quick Reference, shadcn/ui (+1 more)
+Cohesion: 0.14
+Nodes (14): Chat & Messaging → [chat.md](./rules/chat.md), CLI, Component Docs, Examples, and Usage, Critical Rules, Current Project Context, Detailed References, Icons → [icons.md](./rules/icons.md), Key Fields (+6 more)
 
 ### Community 47 - "Frontend Design"
 Cohesion: 0.29
 Nodes (6): Design principles, Frontend Design, Ground your designs in the subject matter, More on writing in design, Process: plan, review against the brief, build, critique, Restraint and self-critique
 
-### Community 48 - "Chat & Messaging"
-Cohesion: 0.22
-Nodes (9): Attachments use Attachment, Chat & Messaging, Contents, Escape hatch: the scroller hooks, Message rows use Message, Message surfaces use Bubble, Scrollable threads use MessageScroller, Streaming, anchoring, and jump-to-latest are built in (+1 more)
+### Community 48 - "Badge"
+Cohesion: 0.14
+Nodes (18): Message surfaces use Bubble, System notes and dividers use Marker, Use Components, Not Custom Markup → [composition.md](./rules/composition.md), Attachments use Attachment, Chat & Messaging, Contents, Escape hatch: the scroller hooks, Message rows use Message (+10 more)
 
 ### Community 49 - "1. Eliminating Waterfalls"
 Cohesion: 0.29
@@ -493,12 +504,12 @@ Cohesion: 0.14
 Nodes (13): Common Skill Categories, Find Skills, How to Help Users Find Skills, Step 1: Understand What They Need, Step 2: Check the Leaderboard First, Step 3: Search for Skills, Step 4: Verify Quality Before Recommending, Step 5: Present Options to the User (+5 more)
 
 ### Community 131 - "shadcn/ui"
-Cohesion: 0.22
-Nodes (9): Component Docs, Examples, and Usage, Current Project Context, Detailed References, Key Fields, Key Patterns, Principles, Quick Reference, shadcn/ui (+1 more)
+Cohesion: 0.14
+Nodes (14): Chat & Messaging → [chat.md](./rules/chat.md), CLI, Component Docs, Examples, and Usage, Critical Rules, Current Project Context, Detailed References, Icons → [icons.md](./rules/icons.md), Key Fields (+6 more)
 
 ### Community 132 - "Commands"
-Cohesion: 0.12
-Nodes (17): `add` — Add components, `apply` — Apply a preset to an existing project, `build` — Build a custom registry, Commands, Contents, `diff` — Check for updates, `docs` — Get component documentation URLs, Dry-Run Mode (+9 more)
+Cohesion: 0.17
+Nodes (12): `add` — Add components, `apply` — Apply a preset to an existing project, `build` — Build a custom registry, Commands, `diff` — Check for updates, `docs` — Get component documentation URLs, Dry-Run Mode, `info` — Project information (+4 more)
 
 ### Community 133 - "Tools"
 Cohesion: 0.17
@@ -511,6 +522,10 @@ Nodes (12): Built-in variants first, className for layout only, Contents, No man
 ### Community 135 - "6. Rendering Performance"
 Cohesion: 0.17
 Nodes (12): 6.10 Use React DOM Resource Hints, 6.11 Use useTransition Over Manual Loading States, 6.1 Animate SVG Wrapper Instead of SVG Element, 6.2 CSS content-visibility for Long Lists, 6.3 Hoist Static JSX Elements, 6.4 Optimize SVG Precision, 6.5 Prevent Hydration Mismatch Without Flickering, 6.6 Suppress Expected Hydration Mismatches (+4 more)
+
+### Community 136 - "Component Composition"
+Cohesion: 0.22
+Nodes (9): Avatar always needs AvatarFallback, Callouts use Alert, Card structure, Component Composition, Contents, Dialog, Sheet, and Drawer always need a Title, Empty states use Empty component, Toast notifications follow the project base (+1 more)
 
 ### Community 137 - "3. Server-Side Performance"
 Cohesion: 0.18
@@ -532,9 +547,21 @@ Nodes (9): Adding Custom Colors, Border Radius, Changing the Theme, Checking for
 Cohesion: 0.22
 Nodes (9): Address Schemes, Build and Verify, GitHub Registries, Include, Item Definitions, Mental Model, Registry Authoring and Addresses, Registry Dependencies (+1 more)
 
+### Community 143 - "Component Composition"
+Cohesion: 0.22
+Nodes (9): Avatar always needs AvatarFallback, Callouts use Alert, Card structure, Component Composition, Contents, Dialog, Sheet, and Drawer always need a Title, Empty states use Empty component, Toast notifications follow the project base (+1 more)
+
+### Community 144 - "SelectGroup"
+Cohesion: 0.48
+Nodes (7): Items always inside their Group component, Workflow, Items always inside their Group component, Workflow, SelectGroup(), SelectItem(), SelectLabel()
+
 ### Community 145 - "Frontend Design"
 Cohesion: 0.29
 Nodes (6): Design principles, Frontend Design, Ground your designs in the subject matter, More on writing in design, Process: plan, review against the brief, build, critique, Restraint and self-critique
+
+### Community 146 - "shadcn CLI Reference"
+Cohesion: 0.40
+Nodes (5): Contents, Presets, shadcn CLI Reference, Switching Presets, Templates
 
 ### Community 147 - "1. Eliminating Waterfalls"
 Cohesion: 0.29
@@ -547,6 +574,10 @@ Nodes (7): 2.1 Avoid Barrel File Imports, 2.2 Conditional Module Loading, 2.3 De
 ### Community 149 - "React Best Practices"
 Cohesion: 0.33
 Nodes (5): Creating a New Rule, Getting Started, React Best Practices, Rule File Structure, Structure
+
+### Community 150 - "shadcn CLI Reference"
+Cohesion: 0.40
+Nodes (5): Contents, Presets, shadcn CLI Reference, Switching Presets, Templates
 
 ### Community 151 - "Customizing Components"
 Cohesion: 0.40
@@ -564,24 +595,32 @@ Nodes (4): Icons, Icons in Button use data-icon attribute, No sizing classes on 
 Cohesion: 0.50
 Nodes (3): File-System Paths, Import Paths, Prefer Statically Analyzable Paths
 
+### Community 223 - "1. Análisis de requisitos"
+Cohesion: 0.50
+Nodes (4): 1. Análisis de requisitos, Reglas de negocio, Requisitos funcionales, Requisitos no funcionales
+
+### Community 224 - "sonner.tsx"
+Cohesion: 0.50
+Nodes (3): next-themes, sonner, Toaster()
+
 ## Knowledge Gaps
-- **663 isolated node(s):** `$schema`, `plugins`, `react/rules-of-hooks`, `react/only-export-components`, `$schema` (+658 more)
+- **665 isolated node(s):** `$schema`, `plugins`, `react/rules-of-hooks`, `react/only-export-components`, `$schema` (+660 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 883 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **143 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **142 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `shadcn/ui` connect `shadcn/ui` to `Button`, `panel-recarga.tsx`, `.agents/skills/shadcn/SKILL.md`, `Badge`?**
+- **Why does `shadcn/ui` connect `shadcn/ui` to `SelectGroup`, `Component Selection`, `.agents/skills/shadcn/SKILL.md`?**
   _High betweenness centrality (0.037) - this node is a cross-community bridge._
-- **Why does `Component Selection` connect `Button` to `panel-movimientos.tsx`, `shadcn/ui`, `Badge`, `Component Composition`?**
-  _High betweenness centrality (0.033) - this node is a cross-community bridge._
-- **Why does `shadcn/ui` connect `shadcn/ui` to `Button`, `shadcn/SKILL.md`, `panel-recarga.tsx`, `Badge`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
-- **Are the 2 inferred relationships involving `MiLlaveApp` (e.g. with `2. Jerarquía de excepciones` and `3. Fachada e infraestructura`) actually correct?**
-  _`MiLlaveApp` has 2 INFERRED edges - model-reasoned connections that need verification._
+- **Why does `Component Selection` connect `Component Selection` to `shadcn/ui`, `App.tsx`, `Badge`, `Button`, `panel-movimientos.tsx`?**
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
+- **Why does `shadcn/ui` connect `shadcn/ui` to `SelectGroup`, `Component Selection`, `shadcn/SKILL.md`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **Are the 3 inferred relationships involving `MiLlaveApp` (e.g. with `Arquitectura por capas` and `Orden de construcción`) actually correct?**
+  _`MiLlaveApp` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `$schema`, `plugins`, `react/rules-of-hooks` to the rest of the system?**
-  _663 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _665 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
