@@ -35,7 +35,7 @@ src/
   config/          miLlave.config.ts: tarifas, límites de recarga, catálogo de estaciones/paraderos/bancos
   app/             MiLlaveApp (fachada que usa la UI), composicion.ts (compone dependencias), datosDeDemostracion.ts
   context/         mi-llave-context.ts: contexto + hook useMiLlave (useSyncExternalStore sobre la fachada)
-  components/      Componentes de pantalla (panel-*, tarjeta-visual, lector-de-tarjeta, comprobante-dialog)
+  components/      Componentes de pantalla (panel-*, tarjeta-visual, lector-de-tarjeta, comprobante-dialog, marca-de-servicio)
   components/ui/   Componentes shadcn (generados por la CLI; no editar salvo necesidad)
   lib/             formato.ts, mensaje-de-error.ts, utils.ts (cn)
 docs/
@@ -74,8 +74,10 @@ Regla de dependencias: `components → context → app → domain`; `infrastruct
 ## Interfaz
 
 - Componentes **shadcn** (estilo `radix-nova`, base `radix`, iconos `lucide`). Reglas de la skill `shadcn`: `FieldGroup` + `Field` para formularios, `gap-*` en vez de `space-*`, colores semánticos (`bg-primary`, `text-muted-foreground`, nunca `bg-blue-500`), `cn()` para clases condicionales, `data-icon` en iconos de botones, `Alert`/`Empty`/`Badge` en vez de markup propio, `ToggleGroup` para 2–7 opciones.
-- Tema en `src/index.css`: cobalto (`--primary`), ámbar de señal (`--signal`), verde (`--success`), amarillo de la tarjeta (`--tarjeta`, #ddff03, con texto oscuro y línea de ruta en cobalto), fondo gris concreto frío. Tipografías: Bricolage Grotesque (títulos, saldo) y Figtree (texto). Solo tema claro.
-- Elemento memorable: la tarjeta (`tarjeta-visual.tsx`) con la línea de ruta. Mantener el resto sobrio.
+- Tema en `src/index.css`: azul noche (`--noche`, índigo casi negro, también `--primary`), tinta (`--tinta`), lima de la tarjeta (`--tarjeta`, #ddff03), verde (`--success`), colores de servicio `--troncal` (rojo) y `--zonal` (azul), fondo blanco con un toque de azul. Tipografías: Bricolage Grotesque (títulos, saldo) y Figtree (texto). Solo tema claro.
+- Composición mobile first: la columna del lector (`header.zona-lector`, fondo azul noche) va arriba en móvil y fija a la izquierda desde `lg`. `.zona-lector` redefine los tokens (primary = lima, inputs y bordes translúcidos), así que dentro de ella los componentes shadcn se usan sin estilos sueltos; por eso la tarjeta usa `text-noche`/`bg-noche` y no `primary`. En móvil, con una tarjeta leída, el lector se pliega tras el botón "Cambiar tarjeta".
+- Elemento memorable: la tarjeta lima (`tarjeta-visual.tsx`) con la línea de ruta, que entra con la única animación de la página. Mantener el resto sobrio. `MarcaDeServicio` (punto rojo/azul/ambos) acompaña siempre al nombre del servicio, nunca lo reemplaza.
+- Accesibilidad: controles de al menos 44 px (regla en `index.css` por `data-slot`), opción elegida de un `ToggleGroup` en color de marca, foco visible (lima sobre azul noche), animaciones con `motion-reduce:animate-none`. Los movimientos son una lista (`ul`), no una tabla, para leerse bien en móvil.
 - Buenas prácticas React (skill `vercel-react-best-practices`): estado derivado en el render (sin `useEffect` para derivar), inicializador perezoso de `useState`, imports directos, sin componentes definidos dentro de componentes, ternarios en vez de `&&` para renderizado condicional.
 - La UI no contiene reglas de negocio: solo elige qué clase de dominio instanciar (`crearMedioDePago`) y llama a la fachada `MiLlaveApp`.
 

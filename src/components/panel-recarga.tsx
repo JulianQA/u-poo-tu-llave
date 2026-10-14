@@ -1,4 +1,4 @@
-import { CircleXIcon, WalletIcon } from 'lucide-react'
+import { BanknoteIcon, CircleXIcon, CreditCardIcon, LandmarkIcon, WalletIcon } from 'lucide-react'
 import { useState, type SyntheticEvent } from 'react'
 import { ComprobanteDialog } from '@/components/comprobante-dialog'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
@@ -98,14 +98,14 @@ export function PanelRecarga({ numero }: { numero: string }) {
         <Field>
           <FieldLabel htmlFor="monto-recarga">Valor de la recarga</FieldLabel>
           <ToggleGroup
-            className="flex-wrap"
+            className="grid w-full grid-cols-2 sm:grid-cols-4"
             type="single"
             variant="outline"
             value={montoRapido === undefined ? '' : String(montoRapido)}
             onValueChange={(valor) => valor !== '' && actualizar('monto', valor)}
           >
             {MONTOS_RAPIDOS.map((m) => (
-              <ToggleGroupItem key={m} value={String(m)}>
+              <ToggleGroupItem key={m} value={String(m)} className="text-base tabular-nums">
                 {formatearPesos(m)}
               </ToggleGroupItem>
             ))}
@@ -130,15 +130,24 @@ export function PanelRecarga({ numero }: { numero: string }) {
         <Field>
           <FieldLabel>Medio de pago</FieldLabel>
           <ToggleGroup
-            className="flex-wrap"
+            className="grid w-full grid-cols-3 sm:flex sm:w-fit"
             type="single"
             variant="outline"
             value={formulario.medio}
             onValueChange={(valor) => valor !== '' && actualizar('medio', valor as TipoMedioDePago)}
           >
-            <ToggleGroupItem value="efectivo">Efectivo</ToggleGroupItem>
-            <ToggleGroupItem value="pse">PSE</ToggleGroupItem>
-            <ToggleGroupItem value="tarjeta">Tarjeta débito o crédito</ToggleGroupItem>
+            <ToggleGroupItem value="efectivo">
+              <BanknoteIcon data-icon="inline-start" />
+              Efectivo
+            </ToggleGroupItem>
+            <ToggleGroupItem value="pse">
+              <LandmarkIcon data-icon="inline-start" />
+              PSE
+            </ToggleGroupItem>
+            <ToggleGroupItem value="tarjeta">
+              <CreditCardIcon data-icon="inline-start" />
+              Tarjeta
+            </ToggleGroupItem>
           </ToggleGroup>
         </Field>
 
@@ -202,7 +211,7 @@ export function PanelRecarga({ numero }: { numero: string }) {
             <Field>
               <FieldLabel>Tipo de tarjeta</FieldLabel>
               <ToggleGroup
-            className="flex-wrap"
+                className="grid w-full grid-cols-2 sm:flex sm:w-fit"
                 type="single"
                 variant="outline"
                 value={formulario.tipoTarjeta}
@@ -263,7 +272,7 @@ export function PanelRecarga({ numero }: { numero: string }) {
       )}
 
       <div>
-        <Button type="submit">
+        <Button type="submit" size="lg" className="h-12 w-full rounded-xl text-base sm:w-auto sm:px-6">
           <WalletIcon data-icon="inline-start" />
           {Number.isFinite(monto) && monto > 0 ? `Recargar ${formatearPesos(monto)}` : 'Recargar'}
         </Button>

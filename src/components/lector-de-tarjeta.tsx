@@ -6,6 +6,7 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '
 import { useMiLlave } from '@/context/mi-llave-context'
 import { agruparNumeroDeTarjeta } from '@/lib/formato'
 import { mensajeDeError } from '@/lib/mensaje-de-error'
+import { cn } from '@/lib/utils'
 
 interface Props {
   numeroActual: string | null
@@ -40,9 +41,10 @@ export function LectorDeTarjeta({ numeroActual, alAcercar }: Props) {
         <FieldGroup>
           <Field data-invalid={error !== null}>
             <FieldLabel htmlFor="numero-tarjeta">Número de tarjeta</FieldLabel>
-            <InputGroup>
+            <InputGroup className="h-12 rounded-xl bg-white/10">
               <InputGroupInput
                 id="numero-tarjeta"
+                className="text-base tabular-nums"
                 inputMode="numeric"
                 autoComplete="off"
                 placeholder="16 dígitos"
@@ -51,7 +53,7 @@ export function LectorDeTarjeta({ numeroActual, alAcercar }: Props) {
                 aria-invalid={error !== null}
               />
               <InputGroupAddon align="inline-end">
-                <InputGroupButton type="submit" variant="default">
+                <InputGroupButton type="submit" variant="default" className="h-9 rounded-lg px-3">
                   <NfcIcon data-icon="inline-start" />
                   Acercar
                 </InputGroupButton>
@@ -66,24 +68,37 @@ export function LectorDeTarjeta({ numeroActual, alAcercar }: Props) {
         </FieldGroup>
       </form>
 
-      <div className="flex flex-col gap-2">
-        {app.listarTarjetas().map((tarjeta) => (
-          <Button
-            key={tarjeta.numero}
-            variant={tarjeta.numero === numeroActual ? 'secondary' : 'outline'}
-            className="h-auto justify-between py-2"
-            onClick={() => leer(tarjeta.numero)}
-          >
-            <span className="flex flex-col items-start">
-              <span className="font-medium">{tarjeta.titular.nombreCompleto}</span>
-              <span className="text-xs font-normal text-muted-foreground tabular-nums">
-                {agruparNumeroDeTarjeta(tarjeta.numero)}
+      <section aria-labelledby="titulo-demostracion" className="flex flex-col gap-2">
+        <h2 id="titulo-demostracion" className="font-sans text-sm font-medium">
+          Tarjetas de demostración
+        </h2>
+        {app.listarTarjetas().map((tarjeta) => {
+          const actual = tarjeta.numero === numeroActual
+          return (
+            <Button
+              key={tarjeta.numero}
+              variant={actual ? 'secondary' : 'outline'}
+              aria-pressed={actual}
+              className={cn('h-auto justify-between gap-3 rounded-xl px-3 py-2.5 text-left', actual && 'ring-2 ring-tarjeta')}
+              onClick={() => leer(tarjeta.numero)}
+            >
+              <span className="flex min-w-0 flex-col items-start">
+                <span className="truncate font-medium">{tarjeta.titular.nombreCompleto}</span>
+                <span className="text-xs font-normal text-muted-foreground tabular-nums">
+                  {agruparNumeroDeTarjeta(tarjeta.numero)}
+                </span>
               </span>
-            </span>
-            <span className="text-xs text-muted-foreground">{tarjeta.estaActiva ? 'Activa' : 'Bloqueada'}</span>
-          </Button>
-        ))}
-      </div>
+              <span className="flex items-center gap-1.5 text-xs">
+                <span
+                  aria-hidden="true"
+                  className={cn('size-2 rounded-full', tarjeta.estaActiva ? 'bg-tarjeta' : 'bg-white/40')}
+                />
+                {tarjeta.estaActiva ? 'Activa' : 'Bloqueada'}
+              </span>
+            </Button>
+          )
+        })}
+      </section>
     </div>
   )
 }

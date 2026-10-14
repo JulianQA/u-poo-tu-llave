@@ -1,13 +1,14 @@
-import { ReceiptTextIcon } from 'lucide-react'
+import { PlusIcon, ReceiptTextIcon } from 'lucide-react'
 import { useState } from 'react'
-import { Badge } from '@/components/ui/badge'
+import { MarcaDeServicio } from '@/components/marca-de-servicio'
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { useMiLlave } from '@/context/mi-llave-context'
 import type { FiltroDeMovimientos } from '@/domain/movimientos/HistorialDeMovimientos'
+import type { Movimiento } from '@/domain/movimientos/Movimiento'
+import { Viaje } from '@/domain/movimientos/Viaje'
 import { formatearPesos } from '@/domain/validaciones'
 import { formatearFecha } from '@/lib/formato'
 import { cn } from '@/lib/utils'
@@ -21,6 +22,37 @@ function inicioDelDia(valor: string): Date | undefined {
 
 function finDelDia(valor: string): Date | undefined {
   return valor === '' ? undefined : new Date(`${valor}T23:59:59.999`)
+}
+
+function FilaDeMovimiento({ movimiento: m }: { movimiento: Movimiento }) {
+  const esRecarga = m.efectoEnSaldo > 0
+  return (
+    <li className="flex items-center gap-3 py-3">
+      <span
+        aria-hidden="true"
+        className={cn(
+          'flex size-10 shrink-0 items-center justify-center rounded-full',
+          esRecarga ? 'bg-success/12 text-success' : 'bg-secondary',
+        )}
+      >
+        {m instanceof Viaje ? <MarcaDeServicio tipo={m.tipoServicio} className="size-3" /> : <PlusIcon className="size-4" />}
+      </span>
+      <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+        <p className="font-medium">
+          <span className="sr-only">{esRecarga ? 'Recarga: ' : 'Viaje: '}</span>
+          {m.descripcion}
+        </p>
+        <p className="text-xs text-muted-foreground">{formatearFecha(m.fecha)}</p>
+      </div>
+      <div className="flex shrink-0 flex-col items-end gap-0.5 tabular-nums">
+        <p className={cn('font-semibold', esRecarga && 'text-success')}>
+          {esRecarga ? '+' : '−'}
+          {formatearPesos(m.monto)}
+        </p>
+        <p className="text-xs text-muted-foreground">Saldo {formatearPesos(m.saldoResultante)}</p>
+      </div>
+    </li>
+  )
 }
 
 export function PanelMovimientos({ numero }: { numero: string }) {
@@ -38,12 +70,12 @@ export function PanelMovimientos({ numero }: { numero: string }) {
   const movimientos = historial.filtrar(filtro).ordenadoPorFecha().movimientos
 
   return (
-    <div className="flex flex-col gap-4">
-      <FieldGroup className="sm:flex-row sm:items-end">
-        <Field className="sm:w-auto">
+    <div className="flex flex-col gap-5">
+      <FieldGroup className="grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:items-end">
+        <Field className="col-span-2 sm:w-auto">
           <FieldLabel>Mostrar</FieldLabel>
           <ToggleGroup
-            className="flex-wrap"
+            className="grid w-full grid-cols-3 sm:flex sm:w-fit"
             type="single"
             variant="outline"
             value={tipo}
@@ -65,7 +97,7 @@ export function PanelMovimientos({ numero }: { numero: string }) {
       </FieldGroup>
 
       {movimientos.length === 0 ? (
-        <Empty className="border">
+        <Empty className="rounded-2xl bg-muted">
           <EmptyHeader>
             <EmptyMedia variant="icon">
               <ReceiptTextIcon />
@@ -79,38 +111,11 @@ export function PanelMovimientos({ numero }: { numero: string }) {
           </EmptyHeader>
         </Empty>
       ) : (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Fecha</TableHead>
-              <TableHead>Detalle</TableHead>
-              <TableHead className="text-right">Valor</TableHead>
-              <TableHead className="text-right">Saldo</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {movimientos.map((m) => (
-              <TableRow key={m.id}>
-                <TableCell className="whitespace-nowrap text-muted-foreground">{formatearFecha(m.fecha)}</TableCell>
-                <TableCell>
-                  <span className="flex flex-wrap items-center gap-2">
-                    <Badge variant={m.tipo === 'recarga' ? 'secondary' : 'outline'}>
-                      {m.tipo === 'recarga' ? 'Recarga' : 'Viaje'}
-                    </Badge>
-                    {m.descripcion}
-                  </span>
-                </TableCell>
-                <TableCell className={cn('text-right font-medium tabular-nums', m.efectoEnSaldo > 0 && 'text-success')}>
-                  {m.efectoEnSaldo > 0 ? '+' : '−'}
-                  {formatearPesos(m.monto)}
-                </TableCell>
-                <TableCell className="text-right text-muted-foreground tabular-nums">
-                  {formatearPesos(m.saldoResultante)}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+        <ul aria-label="Movimientos" className="flex flex-col divide-y">
+          {movimientos.map((m) => (
+            <FilaDeMovimiento key={m.id} movimiento={m} />
+          ))}
+        </ul>
       )}
     </div>
   )

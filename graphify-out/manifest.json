@@ -18,9 +18,9 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1789794351.2486134,
-    "seen": 1791221403.5852587,
-    "ast_hash": "fc741029fd48fccd33017e928e6c513d",
+    "mtime": 1791930961.1640515,
+    "seen": 1791931033.7853403,
+    "ast_hash": "a063b1becf055bbbd390922cebd036b8",
     "semantic_hash": ""
   },
   "src/main.tsx": {
@@ -54,9 +54,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1791655407.27683,
-    "seen": 1791655426.739702,
-    "ast_hash": "b6951fdab3571b6f0e31af3897956dc5",
+    "mtime": 1791931021.7198546,
+    "seen": 1791931033.7860699,
+    "ast_hash": "9b81bb7004759beaa39ed91b26cd09d2",
     "semantic_hash": ""
   },
   "README.md": {
@@ -138,15 +138,15 @@
     "semantic_hash": ""
   },
   "src/components/comprobante-dialog.tsx": {
-    "mtime": 1789794351.2611291,
-    "seen": 1791221403.585264,
-    "ast_hash": "f1a3da28f080672a29dd9a6a94952f07",
+    "mtime": 1791929423.7591746,
+    "seen": 1791931033.785354,
+    "ast_hash": "6d88c0ed62dd1dd1fa59544edd7812ce",
     "semantic_hash": ""
   },
   "src/components/lector-de-tarjeta.tsx": {
-    "mtime": 1789794351.262128,
-    "seen": 1791221403.585265,
-    "ast_hash": "a5577a587fc735a56a5be0f0954b9294",
+    "mtime": 1791929289.0496337,
+    "seen": 1791931033.7853563,
+    "ast_hash": "052616c53184a776b4092b1ec4eaca17",
     "semantic_hash": ""
   },
   "src/components/mi-llave-provider.tsx": {
@@ -156,27 +156,27 @@
     "semantic_hash": ""
   },
   "src/components/panel-movimientos.tsx": {
-    "mtime": 1789794351.2651303,
-    "seen": 1791221403.5852666,
-    "ast_hash": "d688930c02e60738260848612830735e",
+    "mtime": 1791930961.162553,
+    "seen": 1791931033.7853646,
+    "ast_hash": "bf9f8089d57a8a1e19cf6351254ad48c",
     "semantic_hash": ""
   },
   "src/components/panel-recarga.tsx": {
-    "mtime": 1789794351.2666354,
-    "seen": 1791221403.5852678,
-    "ast_hash": "8ec932e635750fa5b421d86e09712eaf",
+    "mtime": 1791929414.686195,
+    "seen": 1791931033.785367,
+    "ast_hash": "2691294e969eb2252c8dd32fb4ff2797",
     "semantic_hash": ""
   },
   "src/components/panel-viaje.tsx": {
-    "mtime": 1789794351.2676418,
-    "seen": 1791221403.585269,
-    "ast_hash": "2012ce29091431882945084ecbcb87e6",
+    "mtime": 1791929423.7581697,
+    "seen": 1791931033.7853692,
+    "ast_hash": "f876c89bf32aef1517091eb3022426b1",
     "semantic_hash": ""
   },
   "src/components/tarjeta-visual.tsx": {
-    "mtime": 1791221378.031587,
-    "seen": 1791221403.58527,
-    "ast_hash": "691416609ebe04b50089efd1e1c12879",
+    "mtime": 1791930961.1635535,
+    "seen": 1791931033.7853713,
+    "ast_hash": "0bdb44ffd5d955b0149711b5debefb78",
     "semantic_hash": ""
   },
   "src/components/ui/alert.tsx": {
@@ -1599,6 +1599,12 @@
     "mtime": 1791655416.0172334,
     "seen": 1791655426.7397075,
     "ast_hash": "755cd2f447b3a2b6e8cf77c1956539e0",
+    "semantic_hash": ""
+  },
+  "src/components/marca-de-servicio.tsx": {
+    "mtime": 1791929304.3060086,
+    "seen": 1791931033.7853594,
+    "ast_hash": "9074cf7122476aaad9153186f61ec526",
     "semantic_hash": ""
   }
 }

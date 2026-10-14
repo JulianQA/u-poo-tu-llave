@@ -1,6 +1,7 @@
 import { CircleCheckIcon, CircleXIcon, NfcIcon } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
+import { MarcaDeServicio } from '@/components/marca-de-servicio'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Field, FieldDescription, FieldGroup, FieldLabel } from '@/components/ui/field'
@@ -46,14 +47,15 @@ export function PanelViaje({ numero }: { numero: string }) {
         <Field>
           <FieldLabel>Servicio</FieldLabel>
           <ToggleGroup
-            className="flex-wrap"
+            className="grid w-full grid-cols-1 sm:flex sm:w-fit sm:flex-wrap"
             type="single"
             variant="outline"
             value={servicio}
             onValueChange={(valor) => valor !== '' && elegirServicio(valor as TipoServicio)}
           >
             {app.servicios.map((s) => (
-              <ToggleGroupItem key={s.tipo} value={s.tipo}>
+              <ToggleGroupItem key={s.tipo} value={s.tipo} className="justify-start gap-2.5 sm:justify-center">
+                <MarcaDeServicio tipo={s.tipo} className="ring-2 ring-white" />
                 {s.nombre}
               </ToggleGroupItem>
             ))}
@@ -83,15 +85,15 @@ export function PanelViaje({ numero }: { numero: string }) {
       </FieldGroup>
 
       <div>
-        <Button onClick={pasarPorElLector} disabled={punto === ''}>
+        <Button onClick={pasarPorElLector} disabled={punto === ''} size="lg" className="h-12 w-full rounded-xl text-base sm:w-auto sm:px-6">
           <NfcIcon data-icon="inline-start" />
           Pasar por el lector
         </Button>
       </div>
 
       {resultado === null ? null : resultado.tipo === 'ok' ? (
-        <Alert>
-          <CircleCheckIcon />
+        <Alert className="border-success/40 bg-success/5">
+          <CircleCheckIcon className="text-success" />
           <AlertTitle>{resultado.viaje.esTransbordo ? 'Transbordo registrado' : 'Viaje registrado'}</AlertTitle>
           <AlertDescription>
             {resultado.viaje.descripcion}. Se descontaron {formatearPesos(resultado.viaje.monto)}; el saldo ahora es{' '}

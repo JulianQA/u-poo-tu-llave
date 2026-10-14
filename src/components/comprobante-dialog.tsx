@@ -37,11 +37,14 @@ export function ComprobanteDialog({ comprobante, alCerrar }: Props) {
             <Separator />
             <Fila etiqueta="Saldo anterior" valor={formatearPesos(comprobante.saldoAnterior)} />
             <Fila etiqueta="Valor recargado" valor={formatearPesos(comprobante.monto)} />
-            <Fila etiqueta="Saldo nuevo" valor={formatearPesos(comprobante.saldoNuevo)} />
+            <div className="mt-1 flex items-baseline justify-between gap-4 rounded-xl bg-tarjeta px-3 py-2.5 text-tarjeta-foreground">
+              <dt className="font-medium">Saldo nuevo</dt>
+              <dd className="font-heading text-2xl font-bold tabular-nums">{formatearPesos(comprobante.saldoNuevo)}</dd>
+            </div>
           </dl>
         )}
         <DialogFooter>
-          <Button onClick={alCerrar}>Listo</Button>
+          <Button onClick={alCerrar} size="lg" className="w-full sm:w-auto">Listo</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
